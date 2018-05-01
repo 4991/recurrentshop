@@ -305,7 +305,7 @@ class RecurrentModel(Recurrent):
         self.return_states = return_states
         if readout_input is not None:
             self.readout = True
-            state_spec += [Input(batch_shape=K.int_shape(outputs[0]))]
+            state_spec += [Input(batch_shape=K.int_shape(outputs[1]))]
             self.states += [None]
             inputs += [readout_input]
         else:
