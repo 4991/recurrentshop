@@ -308,6 +308,7 @@ class RecurrentModel(Recurrent):
             state_spec += [Input(batch_shape=K.int_shape(outputs[1]))]
             print('#####################################')
             print(outputs)
+            
             self.states += [None]
             inputs += [readout_input]
         else:
@@ -375,6 +376,7 @@ class RecurrentModel(Recurrent):
         state_shapes = list(map(K.int_shape, self.model.input[1:]))
         states = []
         if self.readout:
+            state_shapes.pop()
             state_shapes.pop()
             # default value for initial_readout is handled in call()
         for shape in state_shapes:
