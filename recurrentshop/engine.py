@@ -679,7 +679,7 @@ class RecurrentModel(Recurrent):
         states = model_output[1:]
         output = model_output[0]
         if self.readout:
-            states += [output]
+            states += [model_output[1]] # readout with h1
             if self.teacher_force:
                 states.insert(-1, counter + 1)
                 states.insert(-1, ground_truth)
